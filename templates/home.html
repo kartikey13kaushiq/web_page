@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    {% block head %}
+      <title>The Talcum Pros</title>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    {% endblock %}
+  </head>
+  <body>
+    {% block body %}
+    <h1>Welcome to "The Teclum Powder" site</h1>
+    <h1>We r doing an Itchy Challange<h1>
+    <p>To Participate Click Below</p>
+    <button type="button"><a href="{{ url_for('competition')}}">competition</a></button>
+  {% endblock %}
+  </body>
+</html>
