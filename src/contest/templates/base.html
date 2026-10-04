@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{{ contest }} · {{ brand }}{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='app.css') }}">
+  <link rel="icon" href="{{ url_for('static', filename='favicon.svg') }}" type="image/svg+xml">
+</head>
+<body>
+  <header><a class="brand" href="{{ url_for('home') }}">{{ brand }}</a></header>
+  <main>{% block body %}{% endblock %}</main>
+  <footer>© {{ brand }} · <a href="{{ url_for('home') }}#rules">Contest rules</a></footer>
+</body>
+</html>

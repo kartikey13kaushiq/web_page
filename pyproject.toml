@@ -1,0 +1,30 @@
+[build-system]
+requires = ["hatchling>=1.21"]
+build-backend = "hatchling.build"
+
+[project]
+name = "contest-signup"
+version = "1.0.0"
+description = "Contest landing page and registration with validation, CSRF, duplicate detection and CSV export."
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.10"
+dependencies = ["flask>=3.0", "flask-wtf>=1.2", "email-validator>=2.1"]
+
+[project.optional-dependencies]
+serve = ["gunicorn>=22"]
+dev = ["pytest>=8", "pytest-cov>=5", "ruff>=0.6"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/contest"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "--cov=contest --cov-report=term-missing --cov-fail-under=90"
+
+[tool.ruff]
+line-length = 120
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "SIM", "RUF"]

@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}You're in · {{ contest }}{% endblock %}
+{% block body %}
+<section class="hero">
+  {% with names = get_flashed_messages() %}
+  <h1>You're in{% if names %}, {{ names[0] }}{% endif %}!</h1>
+  {% endwith %}
+  <p class="lead">Watch your inbox for the challenge brief. Good luck!</p>
+  <a class="button secondary" href="{{ url_for('home') }}">Back to the contest</a>
+</section>
+{% endblock %}

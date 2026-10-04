@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block body %}
+<section class="hero">
+  <p class="eyebrow">{{ brand }} presents</p>
+  <h1>{{ contest }}</h1>
+  <p class="lead">Show us how you beat the summer itch. Share your best fresh-and-dry routine for a chance to win a year's supply.</p>
+  <a class="button" href="{{ url_for('register') }}">Enter the challenge</a>
+</section>
+<section id="rules" class="rules">
+  <h2>How it works</h2>
+  <ol>
+    <li>Register with your name, mobile number and email.</li>
+    <li>We will send you the challenge brief by email.</li>
+    <li>Winners are picked by a jury and contacted directly.</li>
+  </ol>
+  <p class="small">One entry per person. We only use your details to run this contest.</p>
+</section>
+{% endblock %}

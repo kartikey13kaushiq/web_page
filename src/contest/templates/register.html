@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Register · {{ contest }}{% endblock %}
+{% block body %}
+<h1>Register for {{ contest }}</h1>
+<form method="post" action="{{ url_for('register') }}" novalidate class="card">
+  {{ form.csrf_token }}
+  {% for field in [form.first_name, form.last_name, form.mobile, form.email] %}
+  <div class="field{% if field.errors %} invalid{% endif %}">
+    {{ field.label }}
+    {{ field(autocomplete={'first_name': 'given-name', 'last_name': 'family-name', 'mobile': 'tel', 'email': 'email'}[field.name],
+             **({'aria-describedby': field.name ~ '-error', 'aria-invalid': 'true'} if field.errors else {})) }}
+    {% if field.description %}<small>{{ field.description }}</small>{% endif %}
+    {% for error in field.errors %}<p class="error" id="{{ field.name }}-error">{{ error }}</p>{% endfor %}
+  </div>
+  {% endfor %}
+  <div class="field honeypot" aria-hidden="true">{{ form.website.label }} {{ form.website(tabindex='-1', autocomplete='off') }}</div>
+  <div class="field checkbox{% if form.consent.errors %} invalid{% endif %}">
+    {{ form.consent() }} {{ form.consent.label }}
+    {% for error in form.consent.errors %}<p class="error">{{ error }}</p>{% endfor %}
+  </div>
+  <button type="submit" class="button">Register</button>
+</form>
+{% endblock %}
